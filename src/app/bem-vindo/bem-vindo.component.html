@@ -1,1 +1,134 @@
-<p>bem-vindo works!</p>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+
+    Nome: {{ getNome() }}
+    <br/>
+    Idade: {{ getIdade() }}
+    <br/>
+    Idade + 2: {{ 2 + getIdade() }}
+    <br/>
+    <br/>
+
+    <div class="alert alert-success" role="alert">
+        Funcionário: <strong> {{ getNome() }} </strong>
+    </div>
+    <form>
+        <div class="form-group">
+            <label >Nome:</label>
+            <input type="text" class="form-control" placeholder="Marcos, Paulo, Ana, etc."  (input) = "setNome( $event.target.value )">
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" (click)="adicionar01()" >Primary</button>
+    
+    
+    <br/>
+    <br/>
+    <h1>Usando variável de referência</h1>
+    <div class="alert alert-success" role="alert">
+        Funcionário: <strong> {{ getNome02() }} </strong>
+    </div>
+    <form>
+        <div class="form-group">
+            <label >Nome:</label>
+            <input type="text" class="form-control" placeholder="Marcos, Paulo, Ana, etc."  #nomeInput [value]="getNome()" >
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" (click)="adicionar02(nomeInput.value)" >Primary</button>
+    
+    
+    <br/>
+    <br/>
+    <h1>Usando variável de referência</h1>
+    <div class="alert alert-success" role="alert">
+        Funcionário: <strong> {{ getNome03() }} </strong>
+    </div>
+    <form>
+        <div class="form-group">
+            <label >Nome:</label>
+            <input type="text" class="form-control" placeholder="Marcos, Paulo, Ana, etc." 
+                   (input)="setNome03($event.target.value)" >
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" 
+            [disabled]="getNome03().length < 3"  >Primary</button>
+            
+            
+    <br/>
+    <br/>
+    <h1>Usando two-way data binding</h1>
+    <div class="alert alert-success" role="alert">
+        Funcionário: <strong> {{ nome04 }} </strong>
+    </div>
+    <form>
+        <div class="form-group">
+            <label >Nome:</label>
+            <input type="text" class="form-control" placeholder="Marcos, Paulo, Ana, etc." 
+            [(ngModel)]="nome04" name="nome04" >
+        </div>
+    </form>
+    
+    
+    <br/>
+    <br/>
+    <h1>Exibindo condicionalmente com as diretivas ngIf e hidden</h1>
+    <div class="alert alert-success" role="alert" 
+        *ngIf="getAdicionado01()" >
+        Com Ng-If: <strong> {{ getNome03() }} </strong>
+    </div>
+    <div class="alert alert-success" role="alert" 
+        [hidden]="!getAdicionado01()" >
+        Com Hidden: <strong> {{ getNome03() }} </strong>
+    </div>
+    <form>
+        <div class="form-group">
+            <label >Nome:</label>
+            <input type="text" class="form-control" placeholder="Marcos, Paulo, Ana, etc." 
+                    (input)="setNome03($event.target.value)" (focus)="setAdicionado01(false)" >
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" 
+            [disabled]="getNome03().length < 3" (click)="setAdicionado01(true)" >Primary</button>
+            
+            
+    <br/>
+    <br/>
+    <h1>Iterando com a diretiva ngFor</h1>
+    
+    <div class="row">
+        <div class="col-2" style="margin-top: 20px; margin-bottom: 20px;"
+            *ngFor="let funcionario of getFuncionarios()">
+            <div class="card" >
+                <img src="https://randomuser.me/api/portraits/men/{{funcionario.id}}.jpg" class="card-img-top" alt="...">
+                <div class="card-body"> {{ funcionario.nome }} </div>
+            </div>
+        </div>
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label >Nome:</label>
+            <input type="text" class="form-control" placeholder="Marcos, Paulo, Ana, etc." #nomeInput02 >
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" 
+            (click)="adicionar03(nomeInput02.value)" >Primary</button>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>

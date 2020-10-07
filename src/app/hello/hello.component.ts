@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'app-hello',
     template: `
         <h2>
-            teste
+            Nome: {{ getNome() }}
         </h2>
     `
 })
